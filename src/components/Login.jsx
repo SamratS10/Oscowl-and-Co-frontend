@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../slices/authSlice'; // Adjust import according to your file structure
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // Validation schema using Yup
 const validationSchema = Yup.object({
@@ -48,9 +48,15 @@ const LoginForm = () => {
           maxWidth: 400,
         }}
       >
-        <Typography variant="h4" sx={{ marginBottom: 2, textAlign: 'center', fontWeight: 'bold' }}>
-          Login
+        <Typography variant="h6" sx={{ marginBottom: 2, textAlign: 'center', fontWeight: 'bold' }}>
+          User Login
         </Typography>
+        <Typography display="flex" alignItems="center" sx={{marginBottom:"10px"}}>
+            Don`t have an account?
+            <Link to="/register" style={{ textDecoration: "none" }}>
+              <Typography variant="body2" sx={{ color: "green", marginLeft: 0.5 }}>Register.</Typography>
+            </Link>
+          </Typography>
         <Formik
           initialValues={{ email: '', password: '' }}
           validationSchema={validationSchema}
